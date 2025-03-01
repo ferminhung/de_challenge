@@ -24,7 +24,7 @@ def departments_to_deliver() -> None:
 
     return results.total_rows
 
-def jobss_to_deliver() -> None:
+def jobs_to_deliver() -> None:
     from google.cloud import bigquery
 
     client = bigquery.Client()
