@@ -1,5 +1,5 @@
 import functions_framework
-from load_raw_to_stage import load_departments
+from load_raw_to_stage import load_departments, load_jobs
 
 @functions_framework.http
 def begin_challenge(request):
@@ -22,4 +22,4 @@ def begin_challenge(request):
         name = request_args['name']
     else:
         name = 'World'
-    return load_departments()
+    return [load_departments(),load_jobs()]
