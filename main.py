@@ -1,6 +1,6 @@
 import functions_framework
 from load_raw_to_stage import load_departments, load_jobs, load_hired_employees
-from transform_stage_to_deliver import departments_to_deliver
+from transform_stage_to_deliver import departments_to_deliver, jobs_to_deliver, hired_employees_to_deliver
 
 @functions_framework.http
 def begin_challenge(request):
@@ -29,5 +29,5 @@ def begin_challenge(request):
     load_hired_employees()
 
     
-    
-    return [departments_to_deliver()]
+
+    return [departments_to_deliver(), jobs_to_deliver(), hired_employees_to_deliver()]
