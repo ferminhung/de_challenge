@@ -1,4 +1,6 @@
 def departments_to_deliver() -> None:
+    from google.cloud import bigquery
+
     client = bigquery.Client()
     results = client.query_and_wait(
         """
