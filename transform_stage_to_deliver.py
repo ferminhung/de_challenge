@@ -22,4 +22,4 @@ def departments_to_deliver() -> None:
         COMMIT TRANSACTION;
         """)  
 
-    return results
+    return results.total_rows
