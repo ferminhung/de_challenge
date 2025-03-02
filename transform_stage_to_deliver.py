@@ -70,7 +70,7 @@ def hired_employees_to_deliver() -> None:
         INSERT INTO globant-452412.coding_challenge_gold_deliver.hired_employees 
         SELECT
           CAST(SILVER.id AS INT) AS ID,
-          SILVER.department AS NAME,
+          SILVER.name AS NAME,
           CAST(SILVER.datetime AS TIMESTAMP) AS DATETIME_HIRE,
           CAST(SILVER.department_id AS INT) AS DEPARTMENT_ID,
           CAST(SILVER.job_id AS INT) AS JOB_ID,
