@@ -11,7 +11,7 @@ def load_departments():
             bigquery.SchemaField("department", "STRING"),
         ],
         source_format=bigquery.SourceFormat.CSV,
-        writeDisposition='WRITE_TRUNCATE'
+        write_disposition='WRITE_TRUNCATE'
     )
     uri = 'gs://globant-coding-challenge/raw_files/departments.csv'
 
@@ -37,7 +37,7 @@ def load_jobs():
             bigquery.SchemaField("job", "STRING")
         ],
         source_format=bigquery.SourceFormat.CSV,
-        writeDisposition='WRITE_TRUNCATE'
+        write_disposition='WRITE_TRUNCATE'
     )
     uri = 'gs://globant-coding-challenge/raw_files/jobs.csv'
 
@@ -66,7 +66,7 @@ def load_hired_employees():
             bigquery.SchemaField("job_id", "STRING")
         ],
         source_format=bigquery.SourceFormat.CSV,
-        writeDisposition='WRITE_TRUNCATE'
+        write_disposition='WRITE_TRUNCATE'
     )
     uri = 'gs://globant-coding-challenge/raw_files/hired_employees.csv'
 
