@@ -31,7 +31,7 @@ def begin_challenge(request):
     
 
     return [
-    dep_logs, job_logs, hir_logs
+    dep_logs, job_logs, hir_logs,
     departments_to_deliver(), 
     jobs_to_deliver(), 
     hired_employees_to_deliver()]
