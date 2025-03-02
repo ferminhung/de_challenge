@@ -22,7 +22,7 @@ def departments_to_deliver() -> None:
         COMMIT TRANSACTION;
         """)  
 
-    return results.total_rows
+    return "departments table finish in gold"
 
 def jobs_to_deliver() -> None:
     from google.cloud import bigquery
@@ -48,7 +48,7 @@ def jobs_to_deliver() -> None:
         COMMIT TRANSACTION;
         """)  
 
-    return results.total_rows
+    return "jobs table finish in gold"
 
 def hired_employees_to_deliver() -> None:
     from google.cloud import bigquery
@@ -80,4 +80,4 @@ def hired_employees_to_deliver() -> None:
         COMMIT TRANSACTION;
         """)  
 
-    return results.total_rows
+    return "hired_employees table finish in gold"

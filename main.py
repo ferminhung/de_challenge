@@ -1,3 +1,9 @@
+"""
+curl -X POST https://raw-to-stage-535074537328.us-central1.run.app \
+ -H "Authorization: bearer $(gcloud auth print-identity-token)" \
+ -H "Content-Type: application/json" \
+ -d '{"action": "all" }'
+"""
 import functions_framework
 from load_raw_to_stage import load_departments, load_jobs, load_hired_employees
 from transform_stage_to_deliver import departments_to_deliver, jobs_to_deliver, hired_employees_to_deliver
@@ -15,23 +21,42 @@ def begin_challenge(request):
     """
     request_json = request.get_json(silent=True)
     request_args = request.args
-
     
-    if request_json and 'name' in request_json:
-        name = request_json['name']
-    elif request_args and 'name' in request_args:
-        name = request_args['name']
+    if request_json and 'action' in request_json:
+        action = request_json['action']
+    elif request_args and 'action' in request_args:
+        action = request_args['action']
     else:
-        name = 'World'
+        action = 'all'
     
-    dep_logs = load_departments()
-    job_logs = load_jobs()
-    hir_logs = load_hired_employees()
+    if action == "departments":
+        dep_logs = load_departments()
 
-    
+        return [action,
+        dep_logs,
+        departments_to_deliver()] 
 
-    return [
-    dep_logs, job_logs, hir_logs,
-    departments_to_deliver(), 
-    jobs_to_deliver(), 
-    hired_employees_to_deliver()]
+    elif action == "jobs":
+        job_logs = load_jobs()
+
+        return [action,
+        job_logs,
+        jobs_to_deliver()]
+
+    elif action == "hired":
+        hir_logs = load_hired_employees()
+
+        return [action,
+        hir_logs,
+        hired_employees_to_deliver()]
+
+    else:
+        dep_logs = load_departments()
+        job_logs = load_jobs()
+        hir_logs = load_hired_employees()
+
+        return [action,
+        dep_logs, job_logs, hir_logs,
+        departments_to_deliver(), 
+        jobs_to_deliver(), 
+        hired_employees_to_deliver()]
