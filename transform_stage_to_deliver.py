@@ -59,7 +59,7 @@ def hired_employees_to_deliver() -> None:
         CREATE TABLE IF NOT EXISTS globant-452412.coding_challenge_gold_deliver.hired_employees (
           ID INT OPTIONS (description = 'Id of the employee'),
           NAME STRING OPTIONS (description = 'Name of the employee'),
-          DATETIME_HIRE DATETIME OPTIONS (description = 'Hire datetime in ISO format'),
+          DATETIME_HIRE TIMESTAMP OPTIONS (description = 'Hire datetime in ISO format'),
           DEPARTMENT_ID INT OPTIONS (description = 'ID of the department'),
           JOB_ID INT OPTIONS (description = 'ID of the Job '),
           BATCH_DATE TIMESTAMP OPTIONS (description = 'Batch load date')
@@ -71,7 +71,7 @@ def hired_employees_to_deliver() -> None:
         SELECT
           CAST(SILVER.id AS INT) AS ID,
           SILVER.department AS NAME,
-          CAST(SILVER.datetime AS DATETIME) AS DATETIME_HIRE,
+          CAST(SILVER.datetime AS TIMESTAMP) AS DATETIME_HIRE,
           CAST(SILVER.department_id AS INT) AS DEPARTMENT_ID,
           CAST(SILVER.job_id AS INT) AS JOB_ID,
           TIMESTAMP(CURRENT_TIMESTAMP()) AS BATCH_DATE
