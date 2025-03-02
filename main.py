@@ -24,10 +24,14 @@ def begin_challenge(request):
     else:
         name = 'World'
     
-    load_departments()
-    load_jobs()
-    load_hired_employees()
+    dep_logs = load_departments()
+    job_logs = load_jobs()
+    hir_logs = load_hired_employees()
 
     
 
-    return [departments_to_deliver(), jobs_to_deliver(), hired_employees_to_deliver()]
+    return [
+    dep_logs, job_logs, hir_logs
+    departments_to_deliver(), 
+    jobs_to_deliver(), 
+    hired_employees_to_deliver()]

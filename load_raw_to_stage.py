@@ -10,8 +10,8 @@ def load_departments():
             bigquery.SchemaField("id", "STRING"),
             bigquery.SchemaField("department", "STRING"),
         ],
-        skip_leading_rows=1,
         source_format=bigquery.SourceFormat.CSV,
+        writeDisposition='WRITE_TRUNCATE'
     )
     uri = 'gs://globant-coding-challenge/raw_files/departments.csv'
 
@@ -22,7 +22,7 @@ def load_departments():
     load_job.result()  
 
     destination_table = client.get_table(table_id)  
-    return "Loaded {} rows.".format(destination_table.num_rows)
+    return "Departments Loaded {} rows.".format(destination_table.num_rows)
 
 def load_jobs():
     from google.cloud import bigquery
@@ -36,8 +36,8 @@ def load_jobs():
             bigquery.SchemaField("id", "STRING"),
             bigquery.SchemaField("job", "STRING")
         ],
-        skip_leading_rows=1,
         source_format=bigquery.SourceFormat.CSV,
+        writeDisposition='WRITE_TRUNCATE'
     )
     uri = 'gs://globant-coding-challenge/raw_files/jobs.csv'
 
@@ -48,7 +48,7 @@ def load_jobs():
     load_job.result()  
 
     destination_table = client.get_table(table_id)  
-    return "Loaded {} rows.".format(destination_table.num_rows)
+    return "Jobs Loaded {} rows.".format(destination_table.num_rows)
 
 def load_hired_employees():
     from google.cloud import bigquery
@@ -65,8 +65,8 @@ def load_hired_employees():
             bigquery.SchemaField("department_id", "STRING"),
             bigquery.SchemaField("job_id", "STRING")
         ],
-        skip_leading_rows=1,
         source_format=bigquery.SourceFormat.CSV,
+        writeDisposition='WRITE_TRUNCATE'
     )
     uri = 'gs://globant-coding-challenge/raw_files/hired_employees.csv'
 
@@ -77,4 +77,4 @@ def load_hired_employees():
     load_job.result()  
 
     destination_table = client.get_table(table_id)  
-    return "Loaded {} rows.".format(destination_table.num_rows)
+    return "EmployyesLoaded {} rows.".format(destination_table.num_rows)
