@@ -1,5 +1,5 @@
 """
-curl -X POST https://raw-to-stage-535074537328.us-central1.run.app \
+curl -X POST https://de-challenge-535074537328.us-central1.run.app \
  -H "Authorization: bearer $(gcloud auth print-identity-token)" \
  -H "Content-Type: application/json" \
  -d '{"action": "all" }'
@@ -51,6 +51,7 @@ def begin_challenge(request):
         hired_employees_to_deliver()]
 
     else:
+        action = "all"
         dep_logs = load_departments()
         job_logs = load_jobs()
         hir_logs = load_hired_employees()
